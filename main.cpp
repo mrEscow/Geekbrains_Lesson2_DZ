@@ -13,6 +13,14 @@ enum class Symbols{
     VERTICAL_LINE = '|'
 };
 ///////////////////////////////////////////////////////////////////////////////
+struct t_char {
+    char chrtr;
+    int is_100 : 1; 
+    int is_010 : 1;
+    int is_001 : 1;
+    int is_dig : 1;
+    int is_spc : 1;
+};
 struct Tic_Tac_Toe {
     ///////////////////////////////////////////////////////////////////////////////
     static const int SIZE = 3;
@@ -68,8 +76,9 @@ struct Tic_Tac_Toe {
     }
     ///////////////////////////////////////////////////////////////////////////////
     static void print_element(strs& matrix, int& i, int& j) {
-        str temp = matrix[i];
-        std::cout << temp[j];
+        //str temp = matrix[i];
+        //std::cout << temp[j];
+        std::cout << matrix[i][j];
     }
     ///////////////////////////////////////////////////////////////////////////////
     static void print_new_game_msg() {
@@ -116,13 +125,14 @@ struct Tic_Tac_Toe {
     static int  input_number(char player) {
         int number;
         do
-        {
+        {           
             std::cout 
                 << "Player "
                 << player
                 << " enter number (1...9) : ";  
 
             std::cin >> number;
+            
         } while (number>9 || number<1); 
 
         return number;
@@ -132,9 +142,9 @@ struct Tic_Tac_Toe {
         for (int i = 0; i < SIZE; i++){
             for (int j = 0; j < SIZE; j++){  
                 if (number == (i * SIZE + j +1)){
-                    str temp = matrix[SIZE - 1 - i];
-                    temp[j] = player;
-                    matrix[SIZE - 1 - i] = temp;
+                    //str temp = matrix[SIZE - 1 - i];
+                    //temp[j] = player;
+                    matrix[SIZE - 1 - i][j] = player;
                 }
 
             }//for            
