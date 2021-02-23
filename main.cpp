@@ -33,10 +33,12 @@ struct Tic_Tac_Toe {
         {
             print_enter();
             print_number_of_stroke(i);
+            print_enter();
             char player = select_player(i);
-            change_matrix(player,input_number(), matrix );
+            change_matrix(player,input_number(player), matrix );
             
             system("cls");
+            print_enter();
             print(matrix);
         }
     }
@@ -111,11 +113,15 @@ struct Tic_Tac_Toe {
         std::cout << ' ';
     }
     ///////////////////////////////////////////////////////////////////////////////
-    static int  input_number() {
+    static int  input_number(char player) {
         int number;
         do
         {
-            std::cout << "Enter number (1...9) : ";            
+            std::cout 
+                << "Player "
+                << player
+                << " enter number (1...9) : ";  
+
             std::cin >> number;
         } while (number>9 || number<1); 
 
@@ -125,10 +131,10 @@ struct Tic_Tac_Toe {
     static void  change_matrix(char &player,int number, strs& matrix) {
         for (int i = 0; i < SIZE; i++){
             for (int j = 0; j < SIZE; j++){  
-                if (number== (i * SIZE + j +1)){
-                    str temp = matrix[i];
+                if (number == (i * SIZE + j +1)){
+                    str temp = matrix[SIZE - 1 - i];
                     temp[j] = player;
-                    matrix[i] = temp;
+                    matrix[SIZE - 1 - i] = temp;
                 }
 
             }//for            
