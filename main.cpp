@@ -16,16 +16,17 @@ enum class Symbols{
 struct Tic_Tac_Toe {
     ///////////////////////////////////////////////////////////////////////////////
     static const int SIZE = 3;
+    static const int M_SIZE = SIZE * SIZE;
     ///////////////////////////////////////////////////////////////////////////////
     static void play() {
         strs matrix(SIZE, str(SIZE, (char)Symbols::space));
         print(matrix);
 
-        for (int i = 0; i < SIZE * SIZE; i++)
+        for (int i = 0; i < M_SIZE; i++)
         {
-            if (input_number() == 1) {
-                change_matrix();
-            };
+            
+            change_matrix(input_number(), matrix );
+            
             system("cls");
             print(matrix);
         }
@@ -78,14 +79,23 @@ struct Tic_Tac_Toe {
         std::cout << ' ';
     }
     ///////////////////////////////////////////////////////////////////////////////
-    static char  input_number() {
-        char number;
+    static int  input_number() {
+        int number;
         std::cin >> number;
         return number;
     }
     ///////////////////////////////////////////////////////////////////////////////
-    static void  change_matrix() {
+    static void  change_matrix(int number, strs& matrix) {
+        for (int i = 0; i < SIZE; i++){
+            for (int j = 0; j < SIZE; j++){  
+                if (number== (i * SIZE + j +1)){
+                    str temp = matrix[i];
+                    temp[j] = (char)Symbols::cross;
+                    matrix[i] = temp;
+                }
 
+            }//for            
+        }//for
     }
     ///////////////////////////////////////////////////////////////////////////////
 };
