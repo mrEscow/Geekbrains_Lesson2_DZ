@@ -28,17 +28,17 @@ struct Tic_Tac_Toe{
 
         for (size_t i = 0; i < SIZE; i++)
         {
-            std::cout << std::endl;
+            print_enter();
 
             for (size_t j = 0; j < SIZE; j++)
             {
-                std::cout << (char)Symbols::VERTICAL_LINE;
+                print_VERTICAL_LINE();
                 print_element(matrix,i,j);
                 
             }//for      
 
-            std::cout << (char)Symbols::VERTICAL_LINE;
-            std::cout << std::endl;
+            print_VERTICAL_LINE();
+            print_enter();
             if(i< SIZE-1) std::cout << tire;
         }//for
     }
@@ -46,6 +46,14 @@ struct Tic_Tac_Toe{
     static void print_element(strs& matrix, int i, int j) {
         str temp = matrix[i];
         std::cout << temp[j];
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static void print_enter() {
+        std::cout << std::endl;
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static void print_VERTICAL_LINE() {
+        std::cout << (char)Symbols::VERTICAL_LINE;
     }
     ///////////////////////////////////////////////////////////////////////////////
 };
