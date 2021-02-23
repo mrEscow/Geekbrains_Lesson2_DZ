@@ -6,28 +6,38 @@
 typedef std::string str;
 typedef std::vector<str> strs;
 ///////////////////////////////////////////////////////////////////////////////
-static const int SIZE = 3;
-///////////////////////////////////////////////////////////////////////////////
 enum class Symbols{
     cross ='X',
     zero = 'O',
-    space = ' '
+    space = ' ',
+    VERTICAL_LINE = '|'
 };
 ///////////////////////////////////////////////////////////////////////////////
 struct Tic_Tac_Toe{
-
-
+    ///////////////////////////////////////////////////////////////////////////////
+    static const int SIZE = 3;
+    ///////////////////////////////////////////////////////////////////////////////
+    void play() {
+        strs matrix(SIZE, str(SIZE, (char)Symbols::cross));
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    void print(strs &matrix) {
+        for (size_t i = 0; i < SIZE; i++)
+        {
+            for (size_t j = 0; j < SIZE; j++)
+            {
+                std::cout << (char)Symbols::VERTICAL_LINE << std::endl;
+                std::cout << matrix[j] << std::endl;
+            }//for
+        }//for
+    }
+    ///////////////////////////////////////////////////////////////////////////////
 };
 ///////////////////////////////////////////////////////////////////////////////
 int main(int argc, char** argv){
     //Symbols a = Symbols::cross;
 
-    strs matrix(SIZE, str(SIZE, (char)Symbols::space));
 
-    for (size_t i = 0; i < matrix.size(); i++)
-    {
-        std::cout << matrix[i] << std::endl;
-    }
     char button_1 = (char)Symbols::cross;
     char button_2 = (char)Symbols::cross;
     char button_3 = (char)Symbols::cross;
