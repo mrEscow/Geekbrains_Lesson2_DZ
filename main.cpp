@@ -18,32 +18,34 @@ struct Tic_Tac_Toe{
     static const int SIZE = 3;
     ///////////////////////////////////////////////////////////////////////////////
     static void play() {
-        strs matrix(SIZE, str(SIZE, (char)Symbols::cross));
+        strs matrix(SIZE, str(SIZE, (char)Symbols::space));
         print(matrix);
     }
     ///////////////////////////////////////////////////////////////////////////////
-    static void print(strs &matrix) {
+    static void print(strs &matrix) {       
 
-        str tire = { "----------" };
-
-        for (size_t i = 0; i < SIZE; i++)
+        for (int i = 0; i < SIZE; i++)
         {
+            print_tire();
             print_enter();
-
-            for (size_t j = 0; j < SIZE; j++)
+            for (int j = 0; j < SIZE; j++)
             {
                 print_VERTICAL_LINE();
+                print_space();
                 print_element(matrix,i,j);
+                print_space();
                 
             }//for      
 
             print_VERTICAL_LINE();
-            print_enter();
-            if(i< SIZE-1) std::cout << tire;
+            print_enter();           
+            
         }//for
+
+        print_tire();
     }
     ///////////////////////////////////////////////////////////////////////////////
-    static void print_element(strs& matrix, int i, int j) {
+    static void print_element(strs& matrix, int &i, int &j) {
         str temp = matrix[i];
         std::cout << temp[j];
     }
@@ -54,6 +56,16 @@ struct Tic_Tac_Toe{
     ///////////////////////////////////////////////////////////////////////////////
     static void print_VERTICAL_LINE() {
         std::cout << (char)Symbols::VERTICAL_LINE;
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static void print_tire() {
+        str tire = { "-------------" };
+        std::cout << tire;
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static void  print_space() {
+        
+        std::cout << ' ';
     }
     ///////////////////////////////////////////////////////////////////////////////
 };
