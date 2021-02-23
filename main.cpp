@@ -81,7 +81,12 @@ struct Tic_Tac_Toe {
     ///////////////////////////////////////////////////////////////////////////////
     static int  input_number() {
         int number;
-        std::cin >> number;
+        do
+        {
+            std::cout << "Enter number (1...9) : ";            
+            std::cin >> number;
+        } while (number>9 || number<1); 
+
         return number;
     }
     ///////////////////////////////////////////////////////////////////////////////
