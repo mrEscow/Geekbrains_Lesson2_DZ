@@ -17,17 +17,24 @@ struct Tic_Tac_Toe {
     ///////////////////////////////////////////////////////////////////////////////
     static const int SIZE = 3;
     static const int M_SIZE = SIZE * SIZE;
+    //static char player;
     ///////////////////////////////////////////////////////////////////////////////
     static void play() {
         system("cls");
+
         print_new_game_msg();
+
         strs matrix(SIZE, str(SIZE, (char)Symbols::space));
         print(matrix);
 
+
+
         for (int i = 0; i < M_SIZE; i++)
         {
+            print_enter();
             print_number_of_stroke(i);
-            change_matrix(input_number(), matrix );
+            char player = select_player(i);
+            change_matrix(player,input_number(), matrix );
             
             system("cls");
             print(matrix);
@@ -74,6 +81,18 @@ struct Tic_Tac_Toe {
             << std::endl;
     }
     ///////////////////////////////////////////////////////////////////////////////
+    static char select_player(int i) {
+        //char player;
+        //if (i % 2 == 0) { 
+        //    player = (char)Symbols::cross;
+        //}
+        //else {
+        //    player = (char)Symbols::zero;
+        //}
+        //return player;
+        return i % 2 == 0 ? (char)Symbols::cross : (char)Symbols::zero;
+    }
+    ///////////////////////////////////////////////////////////////////////////////
     static void print_enter() {
         std::cout << std::endl;
     }
@@ -103,12 +122,12 @@ struct Tic_Tac_Toe {
         return number;
     }
     ///////////////////////////////////////////////////////////////////////////////
-    static void  change_matrix(int number, strs& matrix) {
+    static void  change_matrix(char &player,int number, strs& matrix) {
         for (int i = 0; i < SIZE; i++){
             for (int j = 0; j < SIZE; j++){  
                 if (number== (i * SIZE + j +1)){
                     str temp = matrix[i];
-                    temp[j] = (char)Symbols::cross;
+                    temp[j] = player;
                     matrix[i] = temp;
                 }
 
