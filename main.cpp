@@ -19,12 +19,14 @@ struct Tic_Tac_Toe {
     static const int M_SIZE = SIZE * SIZE;
     ///////////////////////////////////////////////////////////////////////////////
     static void play() {
+        system("cls");
+        print_new_game_msg();
         strs matrix(SIZE, str(SIZE, (char)Symbols::space));
         print(matrix);
 
         for (int i = 0; i < M_SIZE; i++)
         {
-            
+            print_number_of_stroke(i);
             change_matrix(input_number(), matrix );
             
             system("cls");
@@ -59,6 +61,17 @@ struct Tic_Tac_Toe {
     static void print_element(strs& matrix, int& i, int& j) {
         str temp = matrix[i];
         std::cout << temp[j];
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static void print_new_game_msg() {
+        std::cout << "  NEW GAME  "<<std::endl;
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static void print_number_of_stroke(int &i) {
+        std::cout
+            << "number of stroke : "
+            << i + 1 
+            << std::endl;
     }
     ///////////////////////////////////////////////////////////////////////////////
     static void print_enter() {
@@ -106,27 +119,9 @@ struct Tic_Tac_Toe {
 };
 ///////////////////////////////////////////////////////////////////////////////
 int main(int argc, char** argv){
-    //Symbols a = Symbols::cross;
 
-
-    //char button_1 = (char)Symbols::cross;
-    //char button_2 = (char)Symbols::cross;
-    //char button_3 = (char)Symbols::cross;
-    //str pole1 = { '|',button_1,'|',button_2,'|',button_3,'|' };
-    //str tire = {"----------"};
-    //std::cout << pole1 << std::endl;
-    //std::cout << tire << std::endl;
-    //std::cout << pole1 << std::endl;
-    //std::cout << tire << std::endl;
-    //std::cout << pole1 << std::endl;
-
-    //int a[3 * 3];
-
-    Tic_Tac_Toe::play();
-
-    for (;;)
-    {
-      // T_xs_and_os::play();
+    for (;;){
+        Tic_Tac_Toe::play();
     }
 
     return 0;
