@@ -17,19 +17,35 @@ struct Tic_Tac_Toe{
     ///////////////////////////////////////////////////////////////////////////////
     static const int SIZE = 3;
     ///////////////////////////////////////////////////////////////////////////////
-    void play() {
+    static void play() {
         strs matrix(SIZE, str(SIZE, (char)Symbols::cross));
+        print(matrix);
     }
     ///////////////////////////////////////////////////////////////////////////////
-    void print(strs &matrix) {
+    static void print(strs &matrix) {
+
+        str tire = { "----------" };
+
         for (size_t i = 0; i < SIZE; i++)
         {
+            std::cout << std::endl;
+
             for (size_t j = 0; j < SIZE; j++)
             {
-                std::cout << (char)Symbols::VERTICAL_LINE << std::endl;
-                std::cout << matrix[j] << std::endl;
-            }//for
+                std::cout << (char)Symbols::VERTICAL_LINE;
+                print_element(matrix,i,j);
+                
+            }//for      
+
+            std::cout << (char)Symbols::VERTICAL_LINE;
+            std::cout << std::endl;
+            if(i< SIZE-1) std::cout << tire;
         }//for
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static void print_element(strs& matrix, int i, int j) {
+        str temp = matrix[i];
+        std::cout << temp[j];
     }
     ///////////////////////////////////////////////////////////////////////////////
 };
@@ -38,20 +54,20 @@ int main(int argc, char** argv){
     //Symbols a = Symbols::cross;
 
 
-    char button_1 = (char)Symbols::cross;
-    char button_2 = (char)Symbols::cross;
-    char button_3 = (char)Symbols::cross;
-    str pole1 = { '|',button_1,'|',button_2,'|',button_3,'|' };
-    str tire = {"----------"};
-    std::cout << pole1 << std::endl;
-    std::cout << tire << std::endl;
-    std::cout << pole1 << std::endl;
-    std::cout << tire << std::endl;
-    std::cout << pole1 << std::endl;
+    //char button_1 = (char)Symbols::cross;
+    //char button_2 = (char)Symbols::cross;
+    //char button_3 = (char)Symbols::cross;
+    //str pole1 = { '|',button_1,'|',button_2,'|',button_3,'|' };
+    //str tire = {"----------"};
+    //std::cout << pole1 << std::endl;
+    //std::cout << tire << std::endl;
+    //std::cout << pole1 << std::endl;
+    //std::cout << tire << std::endl;
+    //std::cout << pole1 << std::endl;
 
     //int a[3 * 3];
 
-
+    Tic_Tac_Toe::play();
 
     for (;;)
     {
