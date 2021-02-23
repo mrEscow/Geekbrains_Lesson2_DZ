@@ -13,16 +13,25 @@ enum class Symbols{
     VERTICAL_LINE = '|'
 };
 ///////////////////////////////////////////////////////////////////////////////
-struct Tic_Tac_Toe{
+struct Tic_Tac_Toe {
     ///////////////////////////////////////////////////////////////////////////////
     static const int SIZE = 3;
     ///////////////////////////////////////////////////////////////////////////////
     static void play() {
         strs matrix(SIZE, str(SIZE, (char)Symbols::space));
         print(matrix);
+
+        for (int i = 0; i < SIZE * SIZE; i++)
+        {
+            if (input_number() == 1) {
+                change_matrix();
+            };
+            system("cls");
+            print(matrix);
+        }
     }
     ///////////////////////////////////////////////////////////////////////////////
-    static void print(strs &matrix) {       
+    static void print(strs& matrix) {
 
         for (int i = 0; i < SIZE; i++)
         {
@@ -32,20 +41,21 @@ struct Tic_Tac_Toe{
             {
                 print_VERTICAL_LINE();
                 print_space();
-                print_element(matrix,i,j);
+                print_element(matrix, i, j);
                 print_space();
-                
+
             }//for      
 
             print_VERTICAL_LINE();
-            print_enter();           
-            
+            print_enter();
+
         }//for
 
         print_tire();
+        print_enter();
     }
     ///////////////////////////////////////////////////////////////////////////////
-    static void print_element(strs& matrix, int &i, int &j) {
+    static void print_element(strs& matrix, int& i, int& j) {
         str temp = matrix[i];
         std::cout << temp[j];
     }
@@ -64,8 +74,18 @@ struct Tic_Tac_Toe{
     }
     ///////////////////////////////////////////////////////////////////////////////
     static void  print_space() {
-        
+
         std::cout << ' ';
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static char  input_number() {
+        char number;
+        std::cin >> number;
+        return number;
+    }
+    ///////////////////////////////////////////////////////////////////////////////
+    static void  change_matrix() {
+
     }
     ///////////////////////////////////////////////////////////////////////////////
 };
